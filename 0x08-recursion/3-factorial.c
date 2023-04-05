@@ -3,7 +3,7 @@
  * factorial - Calculate the factorial of a number
  * @n: number to return the factorial from
  *
- * @Return: integer value
+ * Return: Factorial
  */
 int factorial(int n)
 {
