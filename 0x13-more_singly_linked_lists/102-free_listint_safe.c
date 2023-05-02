@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 size_t looped_listint_count(listint_t *head);
-size_t free_listint_safe(listint_t **h);
+size_t free_listint_safe(listint_t **head);
 
 /**
  * looped_listint_count - Counts the number of unique nodes
@@ -58,20 +58,20 @@ size_t looped_listint_count(listint_t *head)
  *
  * Return: The number of nodes in the list.
  */
-size_t free_listint_safe(listint_t **h)
+size_t free_listint_safe(listint_t **head)
 {
 	listint_t *tmp;
 	size_t nodes, index;
 
-	nodes = looped_listint_count(*h);
+	nodes = looped_listint_count(*head);
 
 	if (nodes == 0)
 	{
-		for (; h != NULL && *h != NULL; nodes++)
+		for (; head != NULL && *head != NULL; nodes++)
 		{
-			tmp = (*h)->next;
-			free(*h);
-			*h = tmp;
+			tmp = (*head)->next;
+			free(*head);
+			*head = tmp;
 		}
 
 	}
@@ -80,15 +80,15 @@ size_t free_listint_safe(listint_t **h)
 	{
 		for (index = 0; index < nodes; index++)
 		{
-			tmp = (*h)->next;
-			free(*h);
-			*h = tmp;
+			tmp = (*head)->next;
+			free(*head);
+			*head = tmp;
 		}
 
-		*h = NULL;
+		*head = NULL;
 	}
 
-	h = NULL;
+	head = NULL;
 
 	return (nodes);
 }
